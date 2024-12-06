@@ -7,9 +7,9 @@
     "dev": "npm run service:up && next dev",
     "test": "jest",
     "test:watch": "jest --watch",
-    "service:up": "docker compose -f infra/compose.yaml up -d",
-    "service:stop": "docker compose -f infra/compose.yaml stop",
-    "service:down": "docker compose -f infra/compose.yaml down",
+    "service:up": "docker compose -f infra/compose.yml up -d",
+    "service:stop": "docker compose -f infra/compose.yml stop",
+    "service:down": "docker compose -f infra/compose.yml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write ."
   },
@@ -27,6 +27,7 @@
     "@types/react": "18.3.13",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
-    "typescript": "5.7.2"
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2"
   }
 }

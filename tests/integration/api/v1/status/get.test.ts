@@ -1,8 +1,11 @@
-describe("GET to /api/v1/status", () => {
-  test("when has success should return status 200 and response", async () => {
-    const res = await fetch("http://localhost:3000/api/v1/status");
-    const data = await res.json();
-    expect(res.status).toBe(200);
-    expect(data).toEqual({ message: "hello" });
-  });
+import { APIStatusResponse } from "@pages/api/v1/status";
+
+test("GET to /api/v1/status should return 200", async () => {
+  const response = await fetch("http://localhost:3000/api/v1/status");
+  const { dependencies, updated_at }: APIStatusResponse = await response.json();
+  expect(response.status).toBe(200);
+  expect(updated_at).toEqual(new Date(updated_at).toUTCString());
+  expect(dependencies.max_connections).toEqual(100);
+  expect(dependencies.opened_connections).toEqual(1);
+  expect(dependencies.postgres_version).toEqual("16.6");
 });
